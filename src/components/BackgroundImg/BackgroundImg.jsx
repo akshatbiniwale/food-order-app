@@ -3,9 +3,9 @@ import img from './bg-img.jpg'
 
 const BackgroundImg = ()=> {
     return (
-        <div className={styles.imgBox}>
+        <header className={styles.imgBox}>
             <img src={img} alt="bg-img" className={styles['bg-img']} />
-        </div>
+        </header>
     );
 }
 
