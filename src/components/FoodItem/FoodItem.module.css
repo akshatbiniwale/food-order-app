@@ -1,0 +1,46 @@
+.food-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.food-name {
+    margin: 0;
+    margin-bottom: 0.25rem;
+}
+
+.food-desc {
+    font-style: italic;
+}
+
+.food-cost {
+    margin-top: 0.25rem;
+    font-weight: bold;
+    color: #ad5502;
+    font-size: 1.25rem;
+}
+
+.food-form {
+    text-align: right;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+label {
+    font-weight: bold;
+    margin-right: 1rem;
+}
+
+input {
+    width: 3rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font: inherit;
+    padding-left: 0.5rem;
+}
