@@ -1,13 +1,13 @@
 import styles from './CartItem.module.css'
 
-const CartItem = ()=> {
+const CartItem = (props)=> {
     return (
         <li className={styles.box}>
             <div>
-                <h2>Sushi</h2>
+                <h2>{props.name}</h2>
                 <div className={styles.info}>
-                    <span className={styles.price}>$22.99</span>
-                    <span className={styles.quantity}>x 1</span>
+                    <span className={styles.price}>${props.price}</span>
+                    <span className={styles.quantity}>x {props.amount}</span>
                 </div>
             </div>
             <div className={styles.buttons}>

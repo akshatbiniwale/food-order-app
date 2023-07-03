@@ -1,7 +1,19 @@
 import FoodForm from '../FoodForm/FoodForm';
 import styles from './FoodItem.module.css'
 
-const FoodItem = (props)=> {
+const FoodItem = (props)=> {    
+    const dataHandler = (amount)=> {
+        const foodData = {
+            id: props.id,
+            name: props.name,
+            desc: props.desc,
+            price: props.price,
+            amount: amount
+        }
+
+        props.getData(foodData);
+    }
+
     return(
         <li className={styles['food-item']}>
             <div>
@@ -10,7 +22,7 @@ const FoodItem = (props)=> {
                 <div className={styles['food-cost']}>${props.price}</div>
             </div>
             <div>
-                <FoodForm />
+                <FoodForm getAmount={dataHandler} />
             </div>
         </li>
     );

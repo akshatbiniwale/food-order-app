@@ -1,14 +1,23 @@
+import { useRef } from 'react'
 import styles from './FoodForm.module.css'
-import Button from '../UI/Button'
 
-const FoodForm = () => {
+const FoodForm = (props) => {
+    const amountInputRef = useRef();
+
+    const formSubmitHandler = (event)=> {
+        event.preventDefault();
+
+        const amount = amountInputRef.current.value;
+        props.getAmount(amount);
+    }
+
     return (
-        <form className={styles['food-form']}>
+        <form className={styles['food-form']} onSubmit={formSubmitHandler}>
             <div className={styles.quantity}>
                 <label htmlFor="amount">Amount</label>
-                <input type="number" id="amount" min="1" max="5" step="1" value="1" />
+                <input ref={amountInputRef} type="number" id="amount" min="1" max="5" step="1" defaultValue="1" />
             </div>
-            <Button innerText="+ Add"></Button>
+            <button type='submit' className={styles.btn}>+ Add</button>
         </form>
     )
 }

@@ -33,6 +33,10 @@ body{
     font-weight: bold;
 }
 
+.add-to-cart:hover {
+    background-color: #330f00;
+}
+
 .cart-count {
     padding: 0.25rem 1rem;
     border-radius: 25px;
