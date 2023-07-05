@@ -1,6 +1,14 @@
 import styles from './CartItem.module.css'
 
 const CartItem = (props)=> {
+    const inc = ()=> {
+        props.change(props.id, 1, props.price);
+    }
+
+    const dec = ()=> {
+        props.change(props.id, -1, props.price);
+    }
+
     return (
         <li className={styles.box}>
             <div>
@@ -11,8 +19,8 @@ const CartItem = (props)=> {
                 </div>
             </div>
             <div className={styles.buttons}>
-                <button className={styles.control}>−</button>
-                <button className={styles.control}>+</button>
+                <button className={styles.control} onClick={dec}>−</button>
+                <button className={styles.control} onClick={inc}>+</button>
             </div>
         </li>
     );

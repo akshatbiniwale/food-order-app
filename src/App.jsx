@@ -1,5 +1,4 @@
 import { Fragment, useState } from "react";
-import { createPortal } from "react-dom";
 
 import BackgroundImg from "./components/BackgroundImg/BackgroundImg";
 import MainCard from "./components/MainCard/MainCard";
@@ -46,13 +45,12 @@ const App = () => {
   const allFoodDetails = (data)=> {
     setCount_Price((prevCount_Price) => {
       return {
-        count: prevCount_Price.count+data.amount,
-        price: prevCount_Price.price+data.price
+        count: prevCount_Price.count + data.amount,
+        price: prevCount_Price.price + data.price*data.amount
       };
     })
     setAddedMeals((prevMeals) => {
       const found = prevMeals.find((obj)=> obj.id === data.id)
-      console.log(found);
       if(found){
         found.amount += data.amount;
         return ([...prevMeals]);
@@ -70,11 +68,40 @@ const App = () => {
     setCartModal(false);
   }
 
-  if(cartModal){
-    modal = (createPortal(
-      <CartModal closeModal={closeModalHandler} mealsAdded={addedMeals} totalCost={count_price.price}/>,
-      document.getElementById("overlays")
-    ));
+  const deleteMeal = (id)=> {
+    for(var i=0; i<addedMeals.length; i++){
+      if(addedMeals[i].id === id){
+        addedMeals.splice(i,1);
+      }
+    }
+  }
+
+  const valHandler = (id, val, price)=> {
+    setAddedMeals((prevMeals) => {
+      const found = prevMeals.find((obj)=> obj.id === id);
+      found.amount+= val;
+      if(found.amount === 0){
+        deleteMeal(id);
+      }else if(found.amount > 5){
+        found.amount = 5;
+      }
+      return ([...prevMeals]);
+    })
+    setCount_Price((prevCount_Price) => {
+      return {
+        count: prevCount_Price.count + val,
+        price: prevCount_Price.price + val*price
+      };
+    })
+  }
+
+  if (cartModal) {
+    modal = (<CartModal
+      closeModal={closeModalHandler}
+      mealsAdded={addedMeals}
+      totalCost={count_price.price}
+      changeFn={valHandler}
+    />);
   }
 
   return (
