@@ -8,7 +8,7 @@ const FoodItem = (props)=> {
             name: props.name,
             desc: props.desc,
             price: props.price,
-            amount: amount
+            amount: +amount
         }
 
         props.getData(foodData);

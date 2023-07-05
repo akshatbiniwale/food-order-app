@@ -20,7 +20,7 @@ const CartModal = (props)=> {
                     </ul>
                     <div className={styles['total-box']}>
                         <span>Total Amount</span>
-                        <span>$0.00</span>
+                        <span>${props.totalCost}</span>
                     </div>
                     <div className={styles['close-btn']}>
                         <button className={styles.btn} onClick={props.closeModal}>Close</button>
