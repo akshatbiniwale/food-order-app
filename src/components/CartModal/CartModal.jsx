@@ -11,6 +11,11 @@ const ModalOverlay = (props)=> {
     const changeHandler = (id, val, price)=> {
         props.changeFn(id, val, price);
     }
+
+    const orderHandler = ()=> {
+        console.log("Ordering...");
+        props.clearCart();
+    }
     
     return(
         <div className={styles['cart-box']}>
@@ -31,11 +36,11 @@ const ModalOverlay = (props)=> {
                 </ul>
                 <div className={styles['total-box']}>
                     <span>Total Amount</span>
-                    <span>${props.totalCost}</span>
+                    <span>${props.totalCost.toFixed(2)}</span>
                 </div>
                 <div className={styles['close-btn']}>
                     <button className={styles.btn} onClick={props.closeModal}>Close</button>
-                    <button className={styles.order}>Order</button>
+                    <button className={styles.order} onClick={orderHandler}>Order</button>
                 </div>
             </div>
         </div>
