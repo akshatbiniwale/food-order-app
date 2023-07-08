@@ -8,6 +8,8 @@ const Backdrop = (props)=> {
 }
 
 const ModalOverlay = (props)=> {
+    let order = null;
+
     const changeHandler = (id, val, price)=> {
         props.changeFn(id, val, price);
     }
@@ -15,6 +17,10 @@ const ModalOverlay = (props)=> {
     const orderHandler = ()=> {
         console.log("Ordering...");
         props.clearCart();
+    }
+
+    if(props.mealsAdded.length){
+        order = <button className={styles.order} onClick={orderHandler}>Order</button>
     }
     
     return(
@@ -40,7 +46,7 @@ const ModalOverlay = (props)=> {
                 </div>
                 <div className={styles['close-btn']}>
                     <button className={styles.btn} onClick={props.closeModal}>Close</button>
-                    <button className={styles.order} onClick={orderHandler}>Order</button>
+                    {order}
                 </div>
             </div>
         </div>

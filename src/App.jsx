@@ -28,7 +28,7 @@ const App = () => {
     });
     setTimeout(() => {
       setBump(false);
-    }, 500);
+    }, 300);
 
     return (()=> {
       setBump(true);
